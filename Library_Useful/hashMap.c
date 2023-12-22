@@ -1,8 +1,7 @@
-# include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "hashMap.h"
-
 
 //Function get_len
 int get_len(char* value){
@@ -55,7 +54,7 @@ void add(char* key, char* val) {
     }
 }
 
-void get_free() {
+void get_free(){
     for (int i = 0; i < N; i++) {
         if (dict[i].tuple[i][0] != NULL) {
             free(dict[i].tuple[i][0]);
@@ -80,6 +79,19 @@ char* get(char* key){
 }
 
 // Delete function
-void del(){
+void del(char* key){
+    int h = get_hash(key);
+    int i = 0;
 
+    while(dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0],key) != 0){
+        i++;
+        h = (h+i) % N;
+    }
+    if(dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0],key) == 0){
+        free(dict[h].tuple[h][0]);
+        dict[h].tuple[h][0] = NULL;
+        free(dict[h].tuple[h][1]);
+        dict[h].tuple[h][1] = NULL;
+    }
+    else printf("Key '%s' not found \n", key);
 }
