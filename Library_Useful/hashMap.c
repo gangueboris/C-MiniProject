@@ -30,37 +30,39 @@ void add(char* key, char* val) {
     int i = 0;
 
     // Check for collisions and find the next available slot
-    while (dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0], key) != 0) {
+    while(dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0], key) != 0){
         i++;
         h = (h + i) % N;  // Linear probing
     }
 
     // Check if the key already exists in the table
-    if (dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0], key) == 0) {
+    if(dict[h].tuple[h][0] != NULL && strcmp(dict[h].tuple[h][0], key) == 0){
         // Key already exists, update the value or handle accordingly
         free(dict[h].tuple[h][1]);  // Free the old value
         dict[h].tuple[h][1] = malloc(get_len(val) + 1);  // Allocate memory for the new value
         strcpy(dict[h].tuple[h][1], val);  // Copy the new value
-    } else {
+    } 
+    else{
         // Key doesn't exist, insert the new key-value pair
-        if (h < N) {
+        if(h < N){
             dict[h].tuple[h][0] = malloc(get_len(key) + 1);
             dict[h].tuple[h][1] = malloc(get_len(val) + 1);
             strcpy(dict[h].tuple[h][0], key);
             strcpy(dict[h].tuple[h][1], val);
-        } else {
+        }
+        else{
             printf("The dict is full\n");
         }
     }
 }
 
 void get_free(){
-    for (int i = 0; i < N; i++) {
-        if (dict[i].tuple[i][0] != NULL) {
+    for(int i = 0; i < N; i++){
+        if(dict[i].tuple[i][0] != NULL){
             free(dict[i].tuple[i][0]);
             dict[i].tuple[i][0] = NULL;  // Set to NULL after freeing to avoid double freeing
         }
-        if (dict[i].tuple[i][1] != NULL) {
+        if(dict[i].tuple[i][1] != NULL){
             free(dict[i].tuple[i][1]);
             dict[i].tuple[i][1] = NULL;  // Set to NULL after freeing to avoid double freeing
         }
