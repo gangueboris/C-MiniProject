@@ -34,17 +34,14 @@ int main(){
    printf("I got the value: %s\n",e);
    
    for(int i = 0; i < N; i++){
-   printf("key: %s  value %s\n",dict[i].tuple[i][0], dict[i].tuple[i][1]);    
+   //printf("key: %s  value %s\n",dict[i].tuple[i][0], dict[i].tuple[i][1]);   
+     printf("key: %s  value %s\n",dict[i].tuple[i][0], dict[i].tuple[i][1]);
    }
    del(d);
 
 
+
    get_free();
-
-
-
-   //free(b);
-
-   
+  
    return 0;
 }

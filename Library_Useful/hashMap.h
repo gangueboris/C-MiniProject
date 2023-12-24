@@ -22,7 +22,7 @@ void get_free();
 char* get(char* key);
 
 //delete function
-void del();
+void del(char* key);
 
 extern hash dict[N];
 #endif
