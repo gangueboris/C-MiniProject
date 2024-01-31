@@ -1,0 +1,34 @@
+Sépecifications / Générales
+
+Logiciel pour une banque 
+
+- Création de compte client 
+- Afficher un client
+- Supprimer un compte client 
+- afficher tous les clients
+
+On ne connait pasà l'avance le nbre de clients 
+--> Allocation dynamique de la mémoire 
+- Virement entre deux comptes
+
+
+** Caractéristque d'un client 
+Nom 
+Prénom
+Solde 
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+typedef struct {
+       char* nom;
+       char* premnom;
+       int solde;
+}client;
+
+
+
+int main(){
+    client tab_client[100];
+    ajout_client;
+}
