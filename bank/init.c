@@ -12,7 +12,7 @@ int create_account(client* storage, int* nb) { //client
     char bufferFirstName[N];
     int balance;
     //Name
-    printf("Enter your name please: \n");
+    printf("Enter your name please: ");
     fgets(bufferName,N,stdin);
     bufferName[strcspn(bufferName, "\n")] = '\0';
     storage[*nb].name = malloc(strlen(bufferName)+1);
@@ -44,6 +44,41 @@ void displayCustomer(client customer){
 }
 
 // display all customer
+void displayAllCustomer(client*storage, int nbreCustomer){
+    for(int i = 0; i < nbreCustomer ; i++){
+        displayCustomer(storage[i]);
+        printf(".............................\n");
+    }
+}
 
+// Delete an account 
+void deleteAccount(client* storage,int id){
+    storage[id].name = NULL;
+    storage[id].firstName = NULL;
+    storage[id].balance = 0;
+}
+
+//delete opticon
+int deleteOption(client* storage, int nbre){
+    char bufferName[100];
+    char bufferFirstName[100];
+    int balance;
+    printf("Enter your name: ");
+    fgets(bufferName,N,stdin);
+    bufferName[strcspn(bufferName,"\n")] = '\0';
+    printf("Enter your First name: ");
+    fgets(bufferFirstName,N,stdin);
+    bufferFirstName[strcspn(bufferFirstName,"\n")] = '\0';
+    printf("Enter your balance: ");
+    scanf(" %d",&balance);
+    getchar();
+
+    for(int i = 0; i < nbre; i++){
+        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0 && storage[i].balance == balance){
+            return i;
+        }
+    }
+    return -1;
+}
 
 

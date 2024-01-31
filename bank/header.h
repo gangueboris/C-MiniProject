@@ -7,11 +7,14 @@ typedef struct {
        int balance;
 }client;
 
-// For storing account
-
 int create_account();
+
 void displayCustomer(client customer);
 
+void displayAllCustomer(client*storage, int nbreCustomer);
+
+void deleteAccount(client* storage,int id);
+int deleteOption(client* storage, int nbre);
 
 
 
