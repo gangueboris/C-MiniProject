@@ -7,14 +7,15 @@ typedef struct {
        int balance;
 }client;
 
-int create_account();
+int create_account(client* storage, int* nb);
 
 void displayCustomer(client customer);
 
 void displayAllCustomer(client*storage, int nbreCustomer);
 
 void deleteAccount(client* storage,int id);
-int deleteOption(client* storage, int nbre);
+
+int verificationOption(client* storage, int nbre);
 
 
 

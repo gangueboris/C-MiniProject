@@ -38,7 +38,7 @@ int create_account(client* storage, int* nb) { //client
 
 // Display a customer
 void displayCustomer(client customer){
-    printf("Customer Name: %s\n",customer.name);
+    printf("\nCustomer Name: %s\n",customer.name);
     printf("Customer FirstName: %s\n",customer.firstName);
     printf("Customer Balance: %d \n",customer.balance);
 }
@@ -59,22 +59,18 @@ void deleteAccount(client* storage,int id){
 }
 
 //delete opticon
-int deleteOption(client* storage, int nbre){
+int verificationOption(client* storage, int nbre){
     char bufferName[100];
     char bufferFirstName[100];
-    int balance;
     printf("Enter your name: ");
     fgets(bufferName,N,stdin);
     bufferName[strcspn(bufferName,"\n")] = '\0';
     printf("Enter your First name: ");
     fgets(bufferFirstName,N,stdin);
     bufferFirstName[strcspn(bufferFirstName,"\n")] = '\0';
-    printf("Enter your balance: ");
-    scanf(" %d",&balance);
-    getchar();
-
     for(int i = 0; i < nbre; i++){
-        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0 && storage[i].balance == balance){
+        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0){
+            printf("%d",i);
             return i;
         }
     }
@@ -82,3 +78,4 @@ int deleteOption(client* storage, int nbre){
 }
 
 
+//  Menu
