@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "header.h"
 #define NBRE_C 100
-#define PWD 010124
+#define PWD 010
 
 int main() {
     // Storage board
@@ -19,7 +19,7 @@ int main() {
     // Menu
     do{
         printf("...........................\n   WELCOME to BorisBank   \n...........................\n\n");
-        printf("You can : \n- Create an account(1)\n- Display your account(2)\n- Delete your account(3)\n- Display all account(4)\nStop the program(0)\n\n");
+        printf("You can : \n- Create an account (1)\n- Display your account (2)\n- Delete your account (3)\n- Display all account (4)\n- Stop the program (0)\n\n");
         printf("Please choose an option: ");
         scanf("%d",&option);
         getchar();
@@ -44,10 +44,11 @@ int main() {
             break;
         case 4:
            printf("Enter the Password please: ");
-           scanf("%d",&password);
+           scanf(" %d",&password);
+           printf("\n%d//try again%d\n",PWD,password);
            getchar();
-           if(password == PWD) displayAllCustomer(storage,nbre);
-           else printf("try again\n");
+           displayAllCustomer(storage,nbre);
+          
            break;
         default:
             break;
