@@ -20,19 +20,6 @@ int main() {
         return 1;
     }
 
-    for(int i = 0; i < NBRE_C ; i++){
-        storage[i].name = (char*)malloc(CHAR * sizeof(char));
-        if(storage[i].name == NULL){
-        printf("Memory not allocated !!\n");
-        return 1;
-        }
-        storage[i].firstName = (char*)malloc(CHAR * sizeof(char));
-         if(storage[i].firstName == NULL){
-        printf("Memory not allocated !!\n");
-        return 1;
-        }
-    }
-
 
     // Menu
     do{
@@ -52,13 +39,14 @@ int main() {
             id = verificationOption(storage,nbre);
             if(id != -1) displayCustomer(storage[id]);
             else printf("Error\n");
-            printf("Creation Success\n");
             break;
         case 3:
             id = verificationOption(storage, nbre);
-            if(id != -1) deleteAccount(storage, id);
+            if(id != -1){
+                deleteAccount(storage, id);
+                printf("Delete Success\n");
+            }
             else printf("Error\n");
-            printf("Delete Success\n");
             break;
         case 4:
            displayAllCustomer(storage,nbre);
@@ -70,8 +58,14 @@ int main() {
     } while (option!= 0);
    
 
-    
+    for(int i = 0; i < NBRE_C ; i++){
+        free(storage[i].name);
+        storage[i].name = NULL;
 
-     
+        free(storage[i].firstName);
+        storage[i].name = NULL;
+    }
+    free(storage);
+    storage = NULL;
     return 0;
 }

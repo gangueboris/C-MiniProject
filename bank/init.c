@@ -40,7 +40,7 @@ int create_account(client* storage, int* nb) { //client
 void displayCustomer(client customer){
     printf("\nCustomer Name: %s\n",customer.name);
     printf("Customer FirstName: %s\n",customer.firstName);
-    printf("Customer Balance: %d \n",customer.balance);
+    printf("Customer Balance: %d€ \n",customer.balance);
 }
 
 // display all customer
@@ -53,8 +53,10 @@ void displayAllCustomer(client*storage, int nbreCustomer){
 
 // Delete an account 
 void deleteAccount(client* storage,int id){
+    free(storage[id].name);
     storage[id].name = NULL;
-    storage[id].firstName = NULL;
+    free(storage[id].firstName);
+    storage[id].name = NULL;
     storage[id].balance = 0;
 }
 
