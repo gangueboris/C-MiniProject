@@ -6,6 +6,7 @@
 
 //- Creation of an account
 // In need a place to store accounts
+
 void expand(client** storage, int* capacity){
     *capacity *= 2;
     client* temp = realloc(*storage, *capacity * sizeof(client));
@@ -72,7 +73,13 @@ void displayAllCustomer(client* storage, int nbreCustomer) {
 }
 
 
-void deleteAccount(client* storage, int id) {
+void deleteAccount(client* storage, int**capacity,int*top, int position){ 
+    //theck if position is out of bound
+    if(position < 0 || position == *top){
+        printf("Error: Invalid index.\n");
+        return;
+    }
+    
     free(storage[id].name);
     storage[id].name = NULL;
     free(storage[id].firstName);
@@ -80,7 +87,7 @@ void deleteAccount(client* storage, int id) {
     storage[id].balance = 0;
 }
 
-int verificationOption(client* storage, int nbre) {
+int verificationOption(client* storage, int nbre){
     char bufferName[100];
     char bufferFirstName[100];
     printf("Enter your name: ");

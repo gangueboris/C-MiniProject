@@ -11,9 +11,9 @@ int main() {
     client* storage;
     int capacity = NBRE_C;
     int verification;
-    int nbre = 0;
-    int option = 0;
-    int id = 0;
+    int top;
+    int option;
+    int id;
     int password = 0;
     storage = (client*)malloc(NBRE_C * sizeof(client));
     if(storage == NULL){
@@ -32,26 +32,26 @@ int main() {
         switch (option)
         {
         case 1:
-            verification = create_account(storage, &nbre);
+            verification = create_account(storage, &top);
             if(!verification) printf("\nSuccess !!!!\n\n");
             else printf("\nError: Can't create an account\n\n");
             break;
         case 2:
-            id = verificationOption(storage,nbre);
+            id = verificationOption(storage,top);
             if(id != -1) displayCustomer(storage[id]);
             else printf("Error: Can't display\n");
             break;
         case 3:
-            id = verificationOption(storage, nbre);
+            id = verificationOption(storage, top);
             if(id != -1){
                 deleteAccount(storage, id);
-                nbre--; // Decrement the count of active accounts
+                top--; // Decrement the count of active accounts
                 printf("Delete Success\n");
             }
             else printf("Error\n");
             break;
         case 4:
-           displayAllCustomer(storage,nbre);
+           displayAllCustomer(storage,top);
           
            break;
         default:
