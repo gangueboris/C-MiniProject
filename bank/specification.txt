@@ -4,7 +4,7 @@ Logiciel pour une banque
 
 - Création de compte client   (completed)
 - Afficher un client          (completed)
-- Supprimer un compte client  (completed)
+- Supprimer un compte client  
 - afficher tous les clients   (completed)
 - Virement entre deux comptes
 - gerer les mots de passes
@@ -26,13 +26,10 @@ Solde
 
 typedef struct {
        char* nom;
-       char* premnom;
+       char* prenom;
+       int password;
        int solde;
 }client;
 
-
-
-int main(){
-    client tab_client[100];
-    ajout_client;
-}
+NB: While arrays are efficient for many data storage tasks, linked lists can be more suitable
+ in certain scenarios where frequent insertions, deletions, or rearrangements are required.

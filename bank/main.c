@@ -3,12 +3,13 @@
 #include <stdlib.h>
 #include "header.h"
 #define NBRE_C 100
-#define CHAR 10
+
 
 
 int main() {
     // Storage board
     client* storage;
+    int capacity = NBRE_C;
     int verification;
     int nbre = 0;
     int option = 0;

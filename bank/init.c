@@ -2,10 +2,20 @@
 #include <string.h>
 #include<stdlib.h>
 #include "header.h"
-#define N 100
+#define N 50
 
 //- Creation of an account
 // In need a place to store accounts
+void expand(client** storage, int* capacity){
+    *capacity *= 2;
+    client* temp = realloc(*storage, *capacity * sizeof(client));
+    if (temp == NULL) {
+        printf("Memory not allocated \n");
+        return;
+    }
+    *storage = temp;
+    temp = NULL;
+}
 
 int create_account(client* storage, int* nb) { //client
     char bufferName[N];

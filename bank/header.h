@@ -7,6 +7,8 @@ typedef struct {
        int balance;
 }client;
 
+void expand(client** storage, int* capacity);
+
 int create_account(client* storage, int* nb);
 
 void displayCustomer(client customer);
