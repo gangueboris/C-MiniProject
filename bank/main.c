@@ -33,12 +33,12 @@ int main() {
         case 1:
             verification = create_account(storage, &nbre);
             if(!verification) printf("\nSuccess !!!!\n\n");
-            else printf("\nIssue !!!!\n\n");
+            else printf("\nError: Can't create an account\n\n");
             break;
         case 2:
             id = verificationOption(storage,nbre);
             if(id != -1) displayCustomer(storage[id]);
-            else printf("Error\n");
+            else printf("Error: Can't display\n");
             break;
         case 3:
             id = verificationOption(storage, nbre);

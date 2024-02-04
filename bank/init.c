@@ -38,9 +38,15 @@ int create_account(client* storage, int* nb) { //client
 
 // Display a customer
 void displayCustomer(client customer){
-    printf("\nCustomer Name: %s\n",customer.name);
-    printf("Customer FirstName: %s\n",customer.firstName);
-    printf("Customer Balance: %d€ \n",customer.balance);
+    if(customer.name == NULL){
+        printf("Account doesn't exist\n");
+    }
+    else{
+        printf("\nCustomer Name: %s\n",customer.name);
+        printf("Customer FirstName: %s\n",customer.firstName);
+        printf("Customer Balance: %d€ \n",customer.balance);
+    }
+   
 }
 
 // display all customer
@@ -52,15 +58,15 @@ void displayAllCustomer(client*storage, int nbreCustomer){
 }
 
 // Delete an account 
-void deleteAccount(client* storage,int id){
+void deleteAccount(client* storage,int id){ // ------------------------->
     free(storage[id].name);
     storage[id].name = NULL;
     free(storage[id].firstName);
-    storage[id].name = NULL;
+    storage[id].firstName = NULL;
     storage[id].balance = 0;
 }
 
-//delete opticon
+//delete opticon 
 int verificationOption(client* storage, int nbre){
     char bufferName[100];
     char bufferFirstName[100];
@@ -71,8 +77,8 @@ int verificationOption(client* storage, int nbre){
     fgets(bufferFirstName,N,stdin);
     bufferFirstName[strcspn(bufferFirstName,"\n")] = '\0';
     for(int i = 0; i < nbre; i++){
-        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0){
-            printf("%d",i);
+        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0){// ------------------------->
+            printf("%d",i);  
             return i;
         }
     }
