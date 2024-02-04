@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "header.h"
 #define NBRE_C 100
-#define PWD 010
+#define CHAR 10
+
 
 int main() {
     // Storage board
@@ -14,6 +15,23 @@ int main() {
     int id = 0;
     int password = 0;
     storage = (client*)malloc(NBRE_C * sizeof(client));
+    if(storage == NULL){
+        printf("Memory not allocated !!\n");
+        return 1;
+    }
+
+    for(int i = 0; i < NBRE_C ; i++){
+        storage[i].name = (char*)malloc(CHAR * sizeof(char));
+        if(storage[i].name == NULL){
+        printf("Memory not allocated !!\n");
+        return 1;
+        }
+        storage[i].firstName = (char*)malloc(CHAR * sizeof(char));
+         if(storage[i].firstName == NULL){
+        printf("Memory not allocated !!\n");
+        return 1;
+        }
+    }
 
 
     // Menu
@@ -43,10 +61,6 @@ int main() {
             printf("Delete Success\n");
             break;
         case 4:
-           printf("Enter the Password please: ");
-           scanf(" %d",&password);
-           printf("\n%d//try again%d\n",PWD,password);
-           getchar();
            displayAllCustomer(storage,nbre);
           
            break;

@@ -2,19 +2,23 @@ Sépecifications / Générales
 
 Logiciel pour une banque 
 
-- Création de compte client 
-- Afficher un client
-- Supprimer un compte client 
-- afficher tous les clients
+- Création de compte client   (completed)
+- Afficher un client          (completed)
+- Supprimer un compte client  (completed)
+- afficher tous les clients   (completed)
+- Virement entre deux comptes
+- gerer les mots de passes
+- gerer les dynamiquement le nombre de clients
+
 
 On ne connait pasà l'avance le nbre de clients 
 --> Allocation dynamique de la mémoire 
-- Virement entre deux comptes
 
 
 ** Caractéristque d'un client 
 Nom 
 Prénom
+MotDePasse
 Solde 
 
 
