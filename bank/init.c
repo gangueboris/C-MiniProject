@@ -50,15 +50,19 @@ void displayCustomer(client customer){
 }
 
 // display all customer
-void displayAllCustomer(client*storage, int nbreCustomer){
-    for(int i = 0; i < nbreCustomer ; i++){
-        displayCustomer(storage[i]);
-        printf(".............................\n");
+void displayAllCustomer(client* storage, int nbreCustomer) {
+    if (nbreCustomer > 0) { // Check if there are any active accounts
+        for (int i = 0; i < nbreCustomer; i++) {
+            displayCustomer(storage[i]);
+            printf(".............................\n");
+        }
+    } else {
+        printf("No accounts to display.\n");
     }
 }
 
-// Delete an account 
-void deleteAccount(client* storage,int id){ // ------------------------->
+
+void deleteAccount(client* storage, int id) {
     free(storage[id].name);
     storage[id].name = NULL;
     free(storage[id].firstName);
@@ -66,19 +70,18 @@ void deleteAccount(client* storage,int id){ // ------------------------->
     storage[id].balance = 0;
 }
 
-//delete opticon 
-int verificationOption(client* storage, int nbre){
+int verificationOption(client* storage, int nbre) {
     char bufferName[100];
     char bufferFirstName[100];
     printf("Enter your name: ");
-    fgets(bufferName,N,stdin);
-    bufferName[strcspn(bufferName,"\n")] = '\0';
+    fgets(bufferName, sizeof(bufferName) - 1, stdin);  // Use sizeof to prevent buffer overflow
+    bufferName[strcspn(bufferName, "\n")] = '\0';
     printf("Enter your First name: ");
-    fgets(bufferFirstName,N,stdin);
-    bufferFirstName[strcspn(bufferFirstName,"\n")] = '\0';
-    for(int i = 0; i < nbre; i++){
-        if(strcmp(storage[i].name,bufferName) == 0 && strcmp(storage[i].firstName,bufferFirstName) == 0){// ------------------------->
-            printf("%d",i);  
+    fgets(bufferFirstName, sizeof(bufferFirstName) - 1, stdin);  // Use sizeof to prevent buffer overflow
+    bufferFirstName[strcspn(bufferFirstName, "\n")] = '\0';
+
+    for (int i = 0; i < nbre; i++) {
+        if (strcmp(storage[i].name, bufferName) == 0 && strcmp(storage[i].firstName, bufferFirstName) == 0) {
             return i;
         }
     }

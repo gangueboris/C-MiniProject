@@ -44,6 +44,7 @@ int main() {
             id = verificationOption(storage, nbre);
             if(id != -1){
                 deleteAccount(storage, id);
+                nbre--; // Decrement the count of active accounts
                 printf("Delete Success\n");
             }
             else printf("Error\n");
