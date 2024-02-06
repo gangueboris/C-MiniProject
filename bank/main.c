@@ -26,7 +26,7 @@ int main() {
     // Menu
     do{
         printf("...........................\n   WELCOME to BorisBank   \n...........................\n\n");
-        printf("You can : \n- Create an account (1)\n- Display your account (2)\n- Delete your account (3)\n- Display all account (4)\n- Stop the program (0)\n\n");
+        printf("You can : \n- Create an account (1)\n- Display your account (2)\n- Delete your account (3)\n- Transfer money (4)\n- Display all account (5)\n- Stop the program (0)\n\n");
         printf("Please choose an option: ");
         scanf("%d",&option);
         getchar();
@@ -38,12 +38,12 @@ int main() {
             else printf("\nError: Can't create an account\n\n");
             break;
         case 2:
-            id = verificationOption(storage,top);
+            id = verificationOptionRegister(storage,top);
             if(id != -1) displayCustomer(storage[id]);
             else printf("Error: Can't display\n");
             break;
         case 3:
-            id = verificationOption(storage, top);
+            id =verificationOptionRegister(storage, top);
             if(id != -1){
                 deleteAccount(storage,&top, id);
                 printf("Delete Success\n");
@@ -51,6 +51,9 @@ int main() {
             else printf("Error: Account not found !!!\n");
             break;
         case 4:
+            transfer(storage,top);
+            break;
+        case 5:
            displayAllCustomer(storage,top);
           
            break;
@@ -60,7 +63,7 @@ int main() {
     } while (option!= 0);
    
 
-    for(int i = 0; i < NBRE_C ; i++){
+    for(int i = 0; i < top; i++){
         free(storage[i].name);
         storage[i].name = NULL;
 

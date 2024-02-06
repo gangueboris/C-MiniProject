@@ -4,7 +4,7 @@ Logiciel pour une banque
 
 - Création de compte client   (completed)
 - Afficher un client          (completed)
-- Supprimer un compte client  
+- Supprimer un compte client  (completed)
 - afficher tous les clients   (completed)
 - Virement entre deux comptes
 - gerer les mots de passes
@@ -32,4 +32,32 @@ typedef struct {
 }client;
 
 NB: While arrays are efficient for many data storage tasks, linked lists can be more suitable
- in certain scenarios where frequent insertions, deletions, or rearrangements are required.
+in certain scenarios where frequent insertions, deletions, or rearrangements are required.
+
+
+Reallocate MotDePasse
+1- Allouer une nouvelle memoire zone de 80 octets
+2- recopier des données de la 1ere adresse
+3- libere la memoire
+4- je renvoi l'adresse de efficient
+
+Nb--> realloc(NULL, sizeof(int)) <==> malloc(sizeof(int))
+
+
+----------------------------------------------------
+int ajout_client(client** ptab,int* nb){
+       //prologue
+       client* tab = *ptab;
+       tab = realloc(tab,(*nb+1)*sizeof(client));
+       
+       // reste est identique(avant epilogue)
+       .
+       .
+       .
+       .
+       .
+
+       //epilogue
+       *ptab = tab;
+       return 0;
+}

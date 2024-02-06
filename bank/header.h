@@ -4,7 +4,10 @@
 typedef struct {
        char* name; 
        char* firstName;
+       char* identifier;
        int balance;
+       int password;
+       
 }client;
 
 void expand(client** storage, int* capacity);
@@ -17,7 +20,11 @@ void displayAllCustomer(const client*storage, int nbreCustomer);
 
 void deleteAccount(client* storage,int*top, int position);
 
-int verificationOption(client* storage, int nbre);
+int verificationOptionTransfer(client* storage, int nbre);
+
+int verificationOptionRegister(client* storage, int nbre);
+
+void transfer(client* storage,int nbre);
 
 
 
