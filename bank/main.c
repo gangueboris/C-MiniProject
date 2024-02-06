@@ -11,13 +11,14 @@ int main() {
     client* storage;
     int capacity = NBRE_C;
     int verification;
-    int top;
+    int top = 0;
     int option;
     int id;
     int password = 0;
     storage = (client*)malloc(NBRE_C * sizeof(client));
     if(storage == NULL){
         printf("Memory not allocated !!\n");
+    
         return 1;
     }
 
@@ -44,11 +45,10 @@ int main() {
         case 3:
             id = verificationOption(storage, top);
             if(id != -1){
-                deleteAccount(storage, id);
-                top--; // Decrement the count of active accounts
+                deleteAccount(storage,&top, id);
                 printf("Delete Success\n");
             }
-            else printf("Error\n");
+            else printf("Error: Account not found !!!\n");
             break;
         case 4:
            displayAllCustomer(storage,top);

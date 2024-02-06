@@ -48,7 +48,7 @@ int create_account(client* storage, int* nb) { //client
 
 
 // Display a customer
-void displayCustomer(client customer){
+void displayCustomer(const client customer){
     if(customer.name == NULL){
         printf("Account doesn't exist\n");
     }
@@ -61,30 +61,31 @@ void displayCustomer(client customer){
 }
 
 // display all customer
-void displayAllCustomer(client* storage, int nbreCustomer) {
-    if (nbreCustomer > 0) { // Check if there are any active accounts
+void displayAllCustomer(const client* storage, int nbreCustomer) {
+    if (nbreCustomer > 0){ 
         for (int i = 0; i < nbreCustomer; i++) {
             displayCustomer(storage[i]);
             printf(".............................\n");
         }
-    } else {
+    }
+    else {
         printf("No accounts to display.\n");
     }
 }
 
 
-void deleteAccount(client* storage, int**capacity,int*top, int position){ 
+void deleteAccount(client* storage,int*top, int position){ 
     //theck if position is out of bound
     if(position < 0 || position == *top){
         printf("Error: Invalid index.\n");
         return;
     }
-    
-    free(storage[id].name);
-    storage[id].name = NULL;
-    free(storage[id].firstName);
-    storage[id].firstName = NULL;
-    storage[id].balance = 0;
+    for(int i = position; i < *top-1; i++){
+        storage[i].name = storage[i+1].name;
+        storage[i].firstName = storage[i+1].firstName;
+        storage[i].balance = storage[i+1].balance;
+    }
+    (*top)--;
 }
 
 int verificationOption(client* storage, int nbre){
@@ -96,8 +97,7 @@ int verificationOption(client* storage, int nbre){
     printf("Enter your First name: ");
     fgets(bufferFirstName, sizeof(bufferFirstName) - 1, stdin);  // Use sizeof to prevent buffer overflow
     bufferFirstName[strcspn(bufferFirstName, "\n")] = '\0';
-
-    for (int i = 0; i < nbre; i++) {
+    for (int i = 0; i < nbre; i++){
         if (strcmp(storage[i].name, bufferName) == 0 && strcmp(storage[i].firstName, bufferFirstName) == 0) {
             return i;
         }

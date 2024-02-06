@@ -13,9 +13,9 @@ int create_account(client* storage, int* nb);
 
 void displayCustomer(client customer);
 
-void displayAllCustomer(client*storage, int nbreCustomer);
+void displayAllCustomer(const client*storage, int nbreCustomer);
 
-void deleteAccount(client* storage,int id);
+void deleteAccount(client* storage,int*top, int position);
 
 int verificationOption(client* storage, int nbre);
 
