@@ -16,7 +16,6 @@ void Monde::peuplement()
     {
         
         int x = rand() % getKmax_x();
-        std::cout << "x ori="<<x<<'\n';
         int y = rand() % getKmax_y();
         int life = rand() % MAX_LIFE;
         Animal temp{x, y, life};
