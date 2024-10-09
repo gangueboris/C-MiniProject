@@ -3,8 +3,8 @@
 #include "animal.hpp"
 #include <vector>
 
-const int KM_x = 30;
-const int KM_y = 20;
+const int KM_x = 20;
+const int KM_y = 8;
 
 class Monde
 {
@@ -19,6 +19,7 @@ class Monde
     // Others methods
     void peuplement();
     void affiche();
+    void  passeuntour();
 
     private:
         // Screen size

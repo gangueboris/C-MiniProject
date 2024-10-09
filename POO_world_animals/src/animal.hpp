@@ -1,5 +1,8 @@
 #ifndef _ANIMAL_H
 #define _ANIMAL_H
+#include "monde.hpp"
+
+class Monde;
 
 class Animal
 {
@@ -14,11 +17,13 @@ class Animal
      
      // Setteurs
     void setX(const int x_){x = x_;}
-    void setY(const int x_){x = x_;}
-    void setEnergy(const int x_){x = x_;}
+    void setY(const int y_){y = y_;}
+    void setEnergy(const int energy_){energy = energy_;}
 
     // Autres fonctions
-    void affiche() const { std::cout << "x: " << x <<" "<< "y: " << y << " " << "Energy: " << energy <<"\n\n";}
+    void affiche() const {std::cout << "x: " << x <<" "<< "y: " << y << " " << "Energy: " << energy <<"\n\n";}
+    void bouge();
+
    
     ~Animal()
     {
@@ -28,7 +33,8 @@ class Animal
       
   private:
      int x, y, energy;
-     //static inline int nbAnimaux{0};
+     // static inline int nbAnimaux{0};
+    
 };
 
 #endif

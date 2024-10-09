@@ -1,6 +1,6 @@
 #include <iostream>
 #include "monde.hpp"
-const int nb_anim{5};
+const int nb_anim{10};
 int main()
 {
     srand(time(NULL)); // Initialisation of the seed
@@ -10,7 +10,15 @@ int main()
 
     // Test de la function affiche
     myMonde.peuplement();
-    myMonde.affiche();
+    int a=100;
+    while(a--)
+    {
+       myMonde.passeuntour();
+       myMonde.affiche();
+    }
+
+    
+    
 
     return EXIT_SUCCESS;
 }
