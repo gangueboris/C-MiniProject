@@ -33,6 +33,7 @@ class Animal
       
   private:
      int x, y, energy;
+     Monde* world;
      // static inline int nbAnimaux{0};
     
 };

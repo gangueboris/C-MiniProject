@@ -5,8 +5,9 @@
 #include <fstream>
 #include <string>
 
-const int KM_x = 20;
-const int KM_y = 8;
+const int KM_x = 40;
+const int KM_y = 16;
+class Animal;
 
 class Monde
 {
@@ -25,9 +26,24 @@ class Monde
             exit(1);
         }
         std::string ligne;
-        while(std::getline(finput, ligne)){ //lecture de la ligne
-        std::cout << ligne << std::endl;
+        int r = 0;
+        while(r < kMax_y && std::getline(finput, ligne)){ //lecture de la ligne
+           for(int c = 0; c < kMax_x; ++c)
+           {
+             tab2D[r][c] = ligne[c]; // Bug
+           }
+           r++;
         }
+        // For the verification
+        /*std::cout << "verif\n";
+        for(int r = 0; r < kMax_y; ++r)
+        {
+            for (int c = 0; c < kMax_x; ++c)
+            {
+                std::cout << tab2D[r][c];
+            }
+            std::cout << "\n";
+        }*/
      finput.close();
     }
     ~Monde(){} // fermeture (pas strictement nécessaire : automatique quand finput est détruit)
@@ -40,6 +56,7 @@ class Monde
     void peuplement();
     void affiche();
     void  passeuntour();
+    bool isFree(int y,int x){return tab2D[y][x] == ' ' ? true : false;}
 
     private:
         // Screen size
@@ -50,6 +67,7 @@ class Monde
         int nb_animaux;
         char tab2D[kMax_y][kMax_x];
         std::vector<Animal> tab_anim;
+        
 
 };
 

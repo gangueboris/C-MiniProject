@@ -41,9 +41,24 @@ void Monde::affiche()
     {
         for(int c = 0; c < getKmax_x(); ++c)
         {
-            if (tab2D[r][c] == 'A') std::cout << " A ";
-            else if (tab2D[r][c] == 'X') std::cout << " X ";
-            else std::cout << " . ";
+            switch (tab2D[r][c])
+            {
+                case 'A':
+                    std::cout << " A ";
+                    break;
+                case 'X':
+                    std::cout << " X ";
+                    break;
+                case 'R':
+                    std::cout << " r ";
+                    break;
+                case 'M':
+                    std::cout << " m ";
+                    break;
+                default:
+                    std::cout << "  ";
+                    break;
+            }
         }
         std::cout << "\n\n";
     }

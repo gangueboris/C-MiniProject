@@ -1,4 +1,4 @@
- R    M      
+ R    M                                     R
              RR                  
              R                  MMM  MMM  
               RR         
@@ -17,5 +17,4 @@
     MM  RR   MM          
             R                 
             R         
-            RR   M    
-     
+            RR   M       

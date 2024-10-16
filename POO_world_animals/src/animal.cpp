@@ -1,5 +1,4 @@
 #include <iostream>
-#include "monde.hpp"
 #include "animal.hpp"
 
 
@@ -12,7 +11,7 @@ void Animal::bouge()
     {
         
         case 0: // Top
-            y = ((y + 1) % KM_y);
+            y = (y + 1) % KM_y;
             break;
         case 1: // Bottom
             y = (y - 1) < 0 ? 0 : ((y - 1) % KM_y);
